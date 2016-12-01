@@ -1,0 +1,37 @@
+# Path to VM xml config 
+# /etc/libvirt/qemu
+
+    ###   MANAGE VM WITH VIRSH
+
+# Connect to virsh
+    virsh --connect qemu:///system
+
+# Define new machine
+    define /etc/libvirt/qemu/newvm.xml
+
+# List all machines
+    list
+    list --all
+# Remove VM from list
+    undefine VMName
+
+# Shutdown machine
+    shutdown VMName
+
+# Shutdown VM equivalent of taking the power cable off
+    destroy VMName
+
+# If we change VM XML config, we need reload configuration
+    define /etc/libvirt/qemu/VMName.xml
+
+# start VM
+    start VMName
+
+# Suspend VM
+    suspend VMName
+#Resume VM
+    resume VMName
+
+#Clone VM
+virsh --connect qemu:///system shutdown TheVMYouWishToStop
+virt-clone --connect=qemu:///system -o CurrentVM -n NewVM -f /home/htkh/VMs/NewVM.gcow2

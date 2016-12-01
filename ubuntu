@@ -1,0 +1,3 @@
+# Changing hostname
+systemctl restart systemd-logind.service
+hostnamectl set-hostname ceph1
